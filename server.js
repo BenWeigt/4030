@@ -84,7 +84,7 @@ function respondFromApi(req, res, path) {
 }
 
 function respondFromHtml(res, path) {
-	fs.readFile(path, 'utf8', (err, data)=>{
+	fs.readFile(path, 'utf8', async (err, data)=>{
 		if (err) {
 			res.writeHead(404);
 			res.end();
@@ -93,8 +93,15 @@ function respondFromHtml(res, path) {
 		}
 		
 		// Some quick and dodgy moustache-lite processing. Feel free to dm me your disgust.
-		// We'll be loosly supporting {{statement}}
-		data = data.replace(/{{.*?}}/gm, match=>eval(match.slice(2, -2)));
+		// We'll be loosly supporting {{statement}}. Statements can optionally return promises 
+		// that will be resolved before insertion.
+		const terms = await Promise.all(
+			[...data.matchAll(/{{.*?}}/gm)]
+				.map(match=>eval(match[0].slice(2, -2)))
+				.reverse()
+		);
+		data = data.replace(/{{.*?}}/gm, ()=>terms.pop());
+		
 		res.writeHead(200);
 		res.write(data);
 		res.end();

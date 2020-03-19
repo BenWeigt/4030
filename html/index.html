@@ -6,15 +6,14 @@
 		<link rel="stylesheet" href="/html/index.css">
 	</head>
 	<body>
+		{{require('./api/SpotifyAPI').getArtistSearch('freya').then(results=>JSON.stringify(results))}}
 		<!--Search for the artist to analyse-->
-		<section>
-			<input id="search" type="text" placeholder="search artists">
-		</section>
+		<input id="search" type="text" placeholder="search artists">
 		<!--Populated with up to 5 artists from search term-->
 		<section id="search-results"></section>
 		
 		<!--Populated with detailed background for the selected artist-->
-		<section id="detailed-artist"></section>
+		<section id="detailed-artist" class="hide"></section>
 		
 		<script src="/html/index.js" async defer></script>
 	</body>

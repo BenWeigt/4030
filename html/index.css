@@ -28,6 +28,7 @@ input[type="text"] {
 	display: block;
 	border-radius: 100px;
 	text-align: center;
+	max-height: 64px;
 }
 #search::placeholder {
 	transition: color ease 100ms;
@@ -42,7 +43,17 @@ input[type="text"] {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  align-content: start
+  align-content: start;
+	padding-bottom: 20px;
+	max-height: 320px;
+	transition: transform 300ms ease, max-height 300ms ease;
+}
+
+.hide {
+	transform: scale(0) !important;
+	max-height: 0 !important;
+	user-select: none !important;
+	pointer-events: none !important;
 }
 
 .search-results-artist {
@@ -71,4 +82,11 @@ input[type="text"] {
 	text-align: center;
 	width: 100%;
 	font-size: 20px;
+}
+
+#detailed-artist {
+	position: absolute;
+	top: 0;
+	max-height: 100vh;
+	transition: transform 300ms ease, max-height 300ms ease;
 }

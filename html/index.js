@@ -40,6 +40,8 @@
 				.join('');
 			for (const nArtist of nSearchResults.querySelectorAll('.search-results-artist')) {
 				nArtist.addEventListener('click', evt=>{
+					nSearchResults.classList.add('hide');
+					nSearchInput.classList.add('hide');
 					fetch('/api/SpotifyAPI', {
 						method: 'POST',
 						body: JSON.stringify({
@@ -56,7 +58,7 @@
 								link.replaceWith(...link.childNodes);
 							}
 							nDetailedArtist.innerHTML = [...doc.querySelectorAll('.bio-primary, .bio-secondary')].map(n=>n.outerHTML).join('\n');
-							
+							nDetailedArtist.classList.remove('hide');
 							console.log(result);
 						});
 				});

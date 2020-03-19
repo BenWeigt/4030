@@ -16,7 +16,7 @@ https://developer.spotify.com/documentation/web-api/reference/tracks/get-several
 /**
  * https://developer.spotify.com/documentation/web-api/reference/search/search/
  */
-exports.getArtistSearch = async (term, lim)=>{
+exports.getArtistSearch = async (term, lim = 5)=>{
 	return await getWebAPIEndpoint(`/v1/search?q=${encodeURIComponent(term)}&type=artist&limit=${lim}`);
 };
 
