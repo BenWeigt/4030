@@ -1,0 +1,74 @@
+
+@import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
+
+body {
+	font-family: 'Open Sans', sans-serif;
+	color: #333;
+}
+
+input[type="text"] {
+	box-sizing: border-box;
+	background: rgba(255,255,255,0.1);
+  border: none;
+  font-size: 16px;
+  height: auto;
+  margin: 0;
+  outline: 0;
+  padding: 15px;
+  background-color: #e3e3e3;
+  box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+  margin-bottom: 30px;
+}
+
+#search {
+	width: 100%;
+	max-width: 500px;
+	font-size: 30px;
+	margin: auto;
+	display: block;
+	border-radius: 100px;
+	text-align: center;
+}
+#search::placeholder {
+	transition: color ease 100ms;
+}
+#search:focus::placeholder {
+	color: transparent;
+}
+
+#search-results {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  align-content: start
+}
+
+.search-results-artist {
+	position: relative;
+  flex: 1 1 auto;
+  margin: 10px;
+  max-width: 300px;
+  max-height: 300px;
+	background-repeat: no-repeat;
+	background-position: center center;
+	user-select: none;
+	cursor: pointer;
+	border-radius: 100%;
+}
+
+.search-results-artist:before {
+  content: "";
+  display: block;
+  padding-top: 100%;
+}
+
+.search-results-artist:after {
+	content: attr(data-name);
+	position: absolute;
+	top: 100%;
+	text-align: center;
+	width: 100%;
+	font-size: 20px;
+}

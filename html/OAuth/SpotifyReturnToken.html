@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+	<head>
+		<meta charset="utf-8">
+		<title>Authentication</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="">
+	</head>
+	<body>
+		<h1>Redirecting...</h1>
+		<script>
+			const hash = window.location.hash
+				.substring(1)
+				.split('&')
+				.reduce(function (initial, item) {
+					if (item) {
+						var parts = item.split('=');
+						initial[parts[0]] = decodeURIComponent(parts[1]);
+					}
+					return initial;
+				}, {});
+			const token = hash.access_token;
+			if (token) {
+				fetch('/api/SpotifyOAuthToken', {
+					method: 'POST',
+					body: JSON.stringify({
+						method: 'set',
+						args: [token]
+					})
+				}).then(res=>{
+					return res.text();
+				}).then(obj=>{
+					window.location = 'http://localhost:1410/';
+				});
+			}
+			
+		</script>
+	</body>
+</html>
