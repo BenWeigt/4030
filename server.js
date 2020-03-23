@@ -84,6 +84,17 @@ function respondFromApi(req, res, path) {
 	}
 }
 
+const mimes = {
+	html: 'text/html',
+	txt: 'text/plain',
+	css: 'text/css',
+	gif: 'image/gif',
+	jpg: 'image/jpeg',
+	png: 'image/png',
+	svg: 'image/svg+xml',
+	js: 'application/javascript'
+};
+
 function respondFromHtml(res, path) {
 	fs.readFile(path, 'utf8', async (err, data)=>{
 		if (err) {
@@ -103,6 +114,8 @@ function respondFromHtml(res, path) {
 		);
 		data = data.replace(/{{.*?}}/gm, ()=>terms.pop());
 		
+		const type = mimes[path.slice(path.lastIndexOf('.')+1).toLowerCase()] || 'text/plain';
+		res.setHeader('Content-Type', type);
 		res.writeHead(200);
 		res.write(data);
 		res.end();

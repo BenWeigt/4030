@@ -6,20 +6,67 @@
 		<link rel="stylesheet" href="/html/index.css">
 	</head>
 	<body>
-		{{require('./api/SpotifyAPI').getArtistSearch('freya').then(results=>JSON.stringify(results))}}
-		<!--Search for the artist to analyse-->
-		<input id="search" type="text" placeholder="search artists">
-		<!--Populated with up to 5 artists from search term-->
-		<section id="search-results"></section>
+		<div id="backdrop">
+			<h1></h1>
+		</div>
+		<!--
+	list all social media listings for artist
+	
+-->
 		
-		<!--Populated with detailed background for the selected artist-->
-		<section id="detailed-artist" class="hide"></section>
-		
+		<section id="section-primary-artist">
+			<div id="primary-artist-stats" class="card">
+				<div id="stats-grid">
+					<template id="stats-stat">
+						<div class="stat-row">
+							<div class="stat-bar">
+								<div class="stat-bar-fill"></div>
+							</div>
+							<div class="stat-value"></div>
+							<div class="stat-name"></div>
+						</div>
+					</template>
+				</div>
+			</div>
+			
+			<div id="spotify-about" class="card">
+				<a href="https://open.spotify.com/artist/0YrtvWJMgSdVrk3SfNjTbx/about" style="filter: brightness(0.85);font-size: smaller;padding: 10px 0 0 10px; display: block;">From Spotify:</a>
+			</div>
+			<div id="wiki-timeline" class="card">
+				<a href="https://en.wikipedia.org/wiki/Death_Cab_for_Cutie" style="filter: brightness(0.85);font-size: smaller;padding: 10px 0 0 10px; display: block;">From Wikipedia:</a>
+				<h3>Origin</h3>
+				<p>Bellingham, Washington, U.S.</p>
+				<h3>Genres</h3>
+				<p>Rock, indie rock, indie pop, alternative rock</p>
+				<h3>Years active</h3>
+				<p>1997–present</p>			
+			</div>
+			<div class="related">
+			
+			</div>
+			
+			
+			
+		</section>
+	
+	
+		<div class="icon-credits">
+			Icons made available by
+			<a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a>,
+			<a href="https://www.flaticon.com/authors/good-ware" title="Good Ware">Good Ware</a>,
+			<a href="https://www.flaticon.com/authors/eucalyp" title="Eucalyp">Eucalyp</a>,
+			<a href="https://www.flaticon.com/authors/pixel-perfect" title="Pixel perfect">Pixel perfect</a>,
+			<a href="https://www.flaticon.com/authors/wanicon" title="wanicon">Wanicon</a>, and
+			<a href="https://www.flaticon.com/authors/surang" title="surang">Surang</a> through
+			<a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
+		</div>
+		<script>
+			window.primary_artist = {{fs.promises.readFile('data/R/spotify/primary_artist.json', 'utf8')}};
+			window.primary_artist_tracks = {{fs.promises.readFile('data/R/spotify/primary_artist_tracks.json', 'utf8')}};
+			window.related_artists = {{fs.promises.readFile('data/R/spotify/related_artists.json', 'utf8')}};
+			window.related_artists_tracks = {{fs.promises.readFile('data/R/spotify/related_artists_tracks.json', 'utf8')}};
+		</script>
 		<script src="/html/index.js" async defer></script>
 	</body>
 </html>
 
-<!--
-	list all social media listings for artist
-	
--->
