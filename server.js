@@ -14,6 +14,7 @@ const oauth = require('./api/SpotifyOAuthToken');
 // eslint-disable-next-line no-unused-vars
 let config;
 
+const disableAuthRedirect = true;
 let haveToken;
 let authenticating = false;
 
@@ -28,7 +29,7 @@ http.createServer(async (req, res)=>{
 	const path = url.parse(req.url).pathname.substr(1);
 	
 	if (!path) {
-		if (!haveToken && !(haveToken = await checkForToken())) {
+		if (!disableAuthRedirect && !haveToken && !(haveToken = await checkForToken())) {
 			if (!authenticating) {
 				respondFromHtml(res, 'html/OAuth/SpotifyGetToken.html');
 				authenticating = true;
