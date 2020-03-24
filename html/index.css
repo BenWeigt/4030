@@ -41,12 +41,11 @@ body {
 	min-height: 50vh;
 	padding: 300px 0;
 	display: grid;
-	grid-template-columns: 1fr calc(var(--basic-size) * 7 + var(--basic-size)/10*7) 1fr 1fr;
-	grid-template-rows: 1fr 1fr 1fr;
+	grid-template-columns: 0.5fr calc(var(--basic-size) * 7 + var(--basic-size)/10*7) 1fr 0.5fr;
+	grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
 	column-gap: 50px;
 	row-gap: 50px;
 }
-
 #primary-artist-stats {
 	grid-area: 1 / 2 / 2 / 3;
 	display: flex;
@@ -56,7 +55,6 @@ body {
 }
 #spotify-about {
 	grid-area: 2 / 2 / 3 / 4;
-
 }
 #spotify-about::before, #wiki-timeline::before {
 	content: '';
@@ -114,9 +112,6 @@ body {
 	column-gap: var(--b);
 	padding: var(--b);
 }
-
-
-
 
 #stats-grid>.popularity {
 	grid-area: 1 / 6 / 3 / 7;
@@ -191,13 +186,6 @@ body {
 	background-size: calc(var(--w) / 1.5), calc(var(--h) / 1.5);
 }
 
-
-
-
-
-
-
-
 .icon-credits {
 	position: fixed;
 	bottom: 0;
@@ -207,3 +195,34 @@ body {
 	padding: 0 3px;
 	border-radius: 3px 0 0 0;
 }
+
+
+/* We gettin hacky(ier) from here on */
+#question-answers {
+	grid-area: 3 / 2 / 4 / 4;
+
+}
+
+#actor-network {
+	background-color: #87abcf;
+	grid-area: 4 / 2 / 5 / 4;
+	background-image: url(/html/svg/twitter_actor_network.svg);
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+	height: 50vw;
+}
+
+#twitter-semantic {
+	background-color: #87abcf;
+	grid-area: 5 / 2 / 6 / 4;
+	background-image: url(/html/svg/twitter_semantic.svg);
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+	height: 50vw;
+}
+
+
+
+
