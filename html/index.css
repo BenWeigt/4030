@@ -42,7 +42,7 @@ body {
 	padding: 300px 0;
 	display: grid;
 	grid-template-columns: 0.5fr calc(var(--basic-size) * 7 + var(--basic-size)/10*7) 1fr 0.5fr;
-	grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+	grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
 	column-gap: 50px;
 	row-gap: 50px;
 }
@@ -223,6 +223,14 @@ body {
 	height: 50vw;
 }
 
-
+#artist-network {
+	background-color: #87abcf;
+	grid-area: 6 / 2 / 7 / 4;
+	background-image: url(/html/svg/foo.svg);
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+	height: 50vw;
+}
 
 
